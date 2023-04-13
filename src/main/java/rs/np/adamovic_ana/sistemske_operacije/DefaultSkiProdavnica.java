@@ -8,9 +8,17 @@ import com.google.gson.Gson;
 
 import rs.np.adamovic_ana.domenske_klase.Skije;
 
+/**
+ * Implementira SkiProdavnica interfejs preko liste sa skijama.
+ * @author Ana Adamovic
+ *
+ */
 
 public class DefaultSkiProdavnica implements SkiProdavnica {
 	
+	/**
+	 * Lista sa svim skijama u prodavnici. Default implementacija je prko ArrayList klase.
+	 */
 	private List<Skije> sveSkije = new ArrayList<Skije>();
 
 	@Override
