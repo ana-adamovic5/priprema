@@ -1,7 +1,10 @@
 package rs.np.adamovic_ana.sistemske_operacije;
 
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.google.gson.Gson;
 
 import rs.np.adamovic_ana.domenske_klase.Skije;
 
@@ -41,6 +44,26 @@ public class DefaultSkiProdavnica implements SkiProdavnica {
 	@Override
 	public List<Skije> vratiSveSkije() {
 		return sveSkije;
+	}
+
+	@Override
+	public String serijalizujJSON() {
+		 Gson gson=new Gson();
+		return gson.toJson(sveSkije);
+	}
+
+	@Override
+	public void deserijalizujJSON(String fajl) {
+
+		try(FileReader fr=new FileReader(fajl)){
+			Gson gson=new Gson();
+			Skije s=gson.fromJson(fr, Skije.class);
+			//sveSkije.add(s);
+			nabaviSkije(s);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
